@@ -1,62 +1,57 @@
 // Required dependencies
+const router = require('express').Router();
 const { randomUUID } = require('crypto');
+const { Router } = require('express');
 const fs = require('fs');
 const path = require('path');
 
-// Export app
-module.exports = app => {
-
-    // Setup notes
-    fs.readFile("db/db.json","utf8", (err, data) => {
-
-        if (err) throw err;
-
-        var notes = JSON.parse(data);
+    // Pull notes
+    router.get("/notes", function(req, res) {
+        
+        fs.readFile("db/db.json","utf8", (err, data) => {
     
-        // GET route for api/notes
-        app.get("/api/notes", function(req, res) {
-            res.json(notes);
-        });
+            if (err) throw err;
+    
+            var notes = JSON.parse(data);
+
+        res.json(notes);
+        })
+    });
 
         // POST route for api/notes
-        app.post("/api/notes", function(req, res) {
+        router.post("/notes", function(req, res) {
             let newNote = req.body;
-            notes.push(newNote);
+            fs.readFile("db/db.json","utf8", (err, data) => {
+    
+                if (err) throw err;
+        
+                var notes = JSON.parse(data);
             newNote.id = randomUUID();
-            updateDb();
+            notes.push(newNote);
+            updateDb(notes);
             res.json(newNote);
-        });
-
-        // GET route for api/note with specific id
-        app.get("/api/notes/:id", function(req,res) {
-            res.json(notes[req.params.id]);
+            })
         });
 
         // Delete note with specific id
-        app.delete("/api/notes/:id", function(req, res) {
-            notes.splice(req.params.id, 1);
-            updateDb();
-            res.send("Delete Success!!!");
-        });
-
-        // Display notes.html
-        app.get('/notes', function(req,res) {
-            res.sendFile(path.join(__dirname, "../public/notes.html"));
-        });
+        router.delete("/notes/:id", function(req, res) {
+            fs.readFile("db/db.json","utf8", (err, data) => {
+    
+                if (err) throw err;
         
-        // Display index.html
-        app.get('*', function(req,res) {
-            res.sendFile(path.join(__dirname, "../public/index.html"));
+                var notes = JSON.parse(data);
+            const newNotes = notes.filter(note => note.id !== req.params.id)
+            updateDb(newNotes);
+            res.status(200).end();
+            })
         });
 
         //Will update file for any added and/or deleted notes
-        function updateDb() {
+        function updateDb(notes) {
             fs.writeFile("db/db.json",JSON.stringify(notes,'\t'),err => {
                 if (err) throw err;
                 return true;
             });
         }
 
-    });
-
-}
+module.exports = router;
