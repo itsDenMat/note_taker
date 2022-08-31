@@ -10,3 +10,29 @@ Run `npm install` in order to install the following npm package dependencies tha
 
 > `mysql`
 
+* The application will start once the user enters `npm start` in the command line.
+* Application will provide a link to open up the application through a web browser. Such as: `http://localhost:3001`.
+
+## Usage
+* User will then be able to enter NOTE TITLE and NOTE TEXT.
+* Once the user enters the following items, a save icon will appear on the top right of the application.
+* After successfully saving your note, it will appear on the left side of the application and can be accessed for viewing.
+* User will have the ability to delete previous notes by clicking the trash icon.
+
+## Demo
+* Installing necessaries dependencies
+* Starting application through terminal
+* Opening up the application through local host
+* Adding and saving notes
+* Switching to view saved notes
+* Deleting notes that were previously created
+
+## Video Demo Links
+
+## License 
+Note Tracker project is licensed under ISC.
+
+# QUESTIONS
+For inquiries and/or questions:
+<br>
+GitHub: [itsDenMat](#itsDenMat)
