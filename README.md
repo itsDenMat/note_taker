@@ -21,12 +21,19 @@ Run `npm install` in order to install the following npm package dependencies tha
 
 ## Demo
 * Installing necessaries dependencies and starting application through terminal
-* Opening up the application through local host
-* Adding and saving notes
-* Switching to view saved notes
-* Deleting notes that were previously created
+<img src="./Assets/npm_note_taker.gif">
 
-## Video Demo Links
+* Opening up the application through local host
+<img src="./Assets/localhost_note_taker.gif">
+
+* Adding and saving notes
+<img src="./Assets/save_note_taker.gif">
+
+* Switching to view saved notes
+<img src="./Assets/switch_note_taker.gif">
+
+* Deleting notes that were previously created
+<img src="./Assets/delete_note_taker.gif">
 
 ## License 
 Note Tracker project is licensed under ISC.
