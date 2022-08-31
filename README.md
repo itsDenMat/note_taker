@@ -20,8 +20,7 @@ Run `npm install` in order to install the following npm package dependencies tha
 * User will have the ability to delete previous notes by clicking the trash icon.
 
 ## Demo
-* Installing necessaries dependencies
-* Starting application through terminal
+* Installing necessaries dependencies and starting application through terminal
 * Opening up the application through local host
 * Adding and saving notes
 * Switching to view saved notes
